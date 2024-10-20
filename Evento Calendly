@@ -1,0 +1,10 @@
+<script>
+  window.addEventListener('CalendlyEventScheduled', function(event) {
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      'event': 'CalendlyEventScheduled',
+      'calendly_event_type': event.data.event, // Tipo de evento
+      'calendly_event_uri': event.data.uri // URL del evento si lo necesitas
+    });
+  });
+</script>
