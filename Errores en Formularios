@@ -4,24 +4,28 @@ Objetivo:
 Medir los errores que los usuarios cometen al intentar completar un formulario, especialmente en campos importantes como el correo electrónico o el número de teléfono.
 
 Paso a paso:
-Identificar los campos críticos del formulario:
+1)Identificar los campos críticos del formulario:
 
-Localiza los IDs o classes de los campos del formulario donde quieras medir los errores (ej. #email, #phone, etc.).
+2)Localiza los IDs o classes de los campos del formulario donde quieras medir los errores (ej. #email, #phone, etc.).
 Crear un Trigger de Error en GTM:
 
-Ve a "Triggers" > "New" > "Custom Event".
+3)Ve a "Triggers" > "New" > "Custom Event".
 Crea un evento personalizado que se dispare cuando haya un error en el formulario.
 Utiliza Custom JavaScript en GTM para capturar errores de validación. Este código debería escuchar cuando el usuario hace clic en "Enviar" y el formulario devuelve un error. Ejemplo de código:
-javascript
-Copiar código
+javascript.
+
+4)Copiar código:
+
 document.querySelector('#email').addEventListener('invalid', function() {
     dataLayer.push({
         'event': 'form_error',
         'error_field': 'email'
     });
 });
-Configura el trigger para que se active cuando el evento form_error ocurra.
-Crear una nueva Tag en GTM:
+
+5)Configura el trigger para que se active cuando el evento form_error ocurra.
+
+6)Crear una nueva Tag en GTM:
 
 Ve a "Tags" > "New" > "GA4 Event".
 Configura el evento para registrar el error en GA4.
@@ -29,10 +33,10 @@ En "Event Name", usa algo descriptivo como form_error.
 Añade parámetros personalizados como error_field para identificar el campo que falló.
 Probar el Trigger:
 
-Usa la vista previa de GTM y prueba el formulario intencionalmente con errores para ver si el evento se dispara correctamente.
+7)Usa la vista previa de GTM y prueba el formulario intencionalmente con errores para ver si el evento se dispara correctamente.
 Publicar los cambios en GTM:
 
-Publica el contenedor si el trigger se está activando correctamente.
+8)Publica el contenedor si el trigger se está activando correctamente.
 Verificar en GA4:
 
-Revisa en GA4 si el evento form_error se registra correctamente junto con el nombre del campo que falló.
+9)Revisa en GA4 si el evento form_error se registra correctamente junto con el nombre del campo que falló.
