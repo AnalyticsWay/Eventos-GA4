@@ -1,0 +1,27 @@
+Objetivo:
+Medir clics en botones flotantes o sticky (como botones que aparecen al hacer scroll) que son interactivos pero no siempre visibles desde el inicio.
+
+Paso a paso:
+Identificar el botón:
+
+Asegúrate de que el botón tenga un identificador único (ID, Class, etc.). Si no, trabaja con el desarrollador para agregar uno.
+Crear un nuevo Trigger en GTM:
+
+En Google Tag Manager, ve a "Triggers" > "New" > "Click - All Elements".
+Configura el trigger para activarse solo cuando se haga clic en el botón flotante o sticky. Utiliza el selector de CSS para encontrar el botón con su clase o ID (ej.: #botonFlotante o .sticky-button).
+Selecciona Some Clicks y añade una condición basada en el ID o la clase del botón.
+Crear una nueva Tag en GTM:
+
+Ve a "Tags" > "New" > "GA4 Event".
+Configura el evento para enviar la información a Google Analytics.
+En "Event Name", pon algo descriptivo como click_sticky_button.
+En los campos de parámetros personalizados, puedes añadir datos adicionales como el texto del botón ({{Click Text}}) o la URL a la que lleva ({{Click URL}}).
+Prueba el Trigger:
+
+Usa la vista previa de GTM para asegurarte de que el trigger se activa solo cuando el botón flotante es clicado.
+Publicar los cambios en GTM:
+
+Si todo funciona correctamente, publica el contenedor.
+Verificar en GA4:
+
+Ve a GA4 > "Events" y revisa que el evento click_sticky_button esté capturando correctamente los clics.
